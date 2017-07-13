@@ -1,0 +1,72 @@
+<div id="wrapper" ng-class="myClass">
+
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper" ng-controller="tiendaCtrl">
+          <ul class="sidebar-nav" >
+            <li class="sidebar-brand">
+              <h3 >Tiendas</h3>            
+            </li>
+            
+            <li class="sidebar-brand">
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Nombre de la Tienda" ng-model="newTienda.nombre">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" ng-click="addTienda()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Agregar</button>
+                </span>
+              </div> 
+            </li>
+
+            <li class="sidebar-brand">
+              <ul class="list-group" >
+                <li class="list-group-item" ng-repeat="tienda in tiendas">           
+                 <div class="row">
+                   <div class="col-xs-8"><a href="#" ng-click="showProductoServicio.openListProducto(tienda)">{{tienda.nombre}}</a></div>
+                   <div class="col-xs-4"> <button type="button" class="btn btn-default btn-link" ng-click="deleteTienda(tienda.id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></div>
+                 </div>
+                </li>            
+              </ul>
+            </li>
+          </ul>
+      </div>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper" class="container"  ng-controller="productoCtrl">
+      
+      <nav class="navbar navbar-default navbar-transparent navbar-burger">
+        <div class="container-fluid">
+          <div class="navbar-header">  
+          <a class="navbar-brand" href="#menu-toggle" id="menu-toggle" ng-click="checkClass($event)">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+          </a>
+            <a href="#" class="navbar-brand">Tienda {{showProductoServicio.tienda.nombre}}</a>
+          </div>
+          </div>
+      </nav>
+      
+      <div class="container-fluid">
+        <div class="row">
+            <h2 class="col-md-4">Lista de Productos</h2>
+            <a class="col-md-8" style="padding-top:30px;" href="#!/newProducto/{{showProductoServicio.tienda.id}}">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>                
+            </a>   
+        </div>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="producto in showProductoServicio.productos">
+            <h4>{{producto.nombre}}</h4>
+            <p>{{producto.precio}}</p>
+            <p>{{producto.descripcion}}</p> 
+            <div class="row">
+                <a class="col-md-2" href="#!/verProducto/{{producto.id}}">
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    Ver
+                </a>          
+                <a class="col-md-10" href="#" ng-click="deleteProducto(producto.id)">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    Eliminar
+                </a>          
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </div>

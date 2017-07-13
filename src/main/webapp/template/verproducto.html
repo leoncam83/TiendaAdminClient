@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row"><h1 class="col-md-4">Nuevo Producto</h1>  
+        <a class="col-md-8" style="vertical-align: middle; padding-top:33px;" 
+        href="#!/">Regresar</a></div>
+    <form>
+        <div class="form-group row">
+            <label for="nombre_field" class="col-md-2 col-form-label">Nombre</label>
+            <div class="col-md-10">
+                {{producto.nombre}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="precio_field" class="col-md-2 col-form-label">Precio</label>
+            <div class="col-md-10">
+                {{producto.precio}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="descripcion_field" class="col-md-2 col-form-label">Descripción</label>
+            <div class="col-md-10">
+               {{producto.descripcion}}
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="tienda_field" class="col-md-2 col-form-label">Tienda</label>
+            <div class="col-md-10">   
+                <select class="form-control" id="tienda_field" 
+                    ng-options="option.nombre for option in data.availableOptions track by option.id"
+                    ng-model="data.selectedOption" ng-change="updateProducto()">
+                    <!--<option ng-repeat="tienda in tiendas" ng-value="tienda">{{tienda.nombre}}</option>-->
+                </select>
+
+            </div>
+        </div>
+        
+        <!--<button type="button" class="btn btn-primary" ng-click="addProducto()">Crear Producto</button>-->
+
+    </form>
+</div>
